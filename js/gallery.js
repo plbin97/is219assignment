@@ -77,9 +77,11 @@ if (param) {
 		mRequest.send();
 		mImages = JSON.parse(mRequest.responseText).images;
 	}
+}else {
+	mRequest.open("GET","./images.json",false);
+	mRequest.send();
+	mImages = JSON.parse(mRequest.responseText).images;
 }
-
-
 
 document.getElementById("photo").src = mImages[mCurrentIndex].imgPath;
 document.getElementById("imageLocation").innerText = "Location: " + mImages[mCurrentIndex].imgLocation;
